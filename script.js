@@ -1,20 +1,18 @@
 // Function to generate alphabet options for Letter 1 and Letter 2
 function generateAlphabetOptions(groupId, selectId) {
     const container = document.getElementById(groupId);
-    container.innerHTML = ''; // Clear any existing options
-    const letterSelect = document.getElementById(selectId); // Get the element where the selected value will be stored
+    container.innerHTML = ''; 
+    const letterSelect = document.getElementById(selectId); 
 
-    for (let i = 65; i <= 90; i++) { // ASCII codes for A-Z
+    for (let i = 65; i <= 90; i++) { 
         const letter = String.fromCharCode(i);
         const option = document.createElement('div');
         option.classList.add('option');
         option.textContent = letter;
-        option.setAttribute('data-value', letter); // Set value as a data attribute
+        option.setAttribute('data-value', letter); 
 
         option.addEventListener('click', () => {
-            // Remove 'selected' class from all options
             container.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-            // Add 'selected' class to the clicked option
             option.classList.add('selected');
 
             // Access the value and pass it to letterSelect
@@ -22,7 +20,7 @@ function generateAlphabetOptions(groupId, selectId) {
             letterSelect.value = selectedValue; // Set the value of letterSelect
             console.log('Selected Value:', selectedValue);
 
-            updateImageUrl(); // Update the image URL whenever a selection is made
+            updateImageUrl(); 
         });
 
         container.appendChild(option);
@@ -60,7 +58,6 @@ function updateImageUrl() {
     // Logic to generate the image URL
     const baseUrl = `https://images.thepersonalizedbest.com/engrave.jpg?sku=4843&${query}`;
 
-    // Update the image URL display dynamically
     const imageUrlDiv = document.getElementById('imageUrl');
     imageUrlDiv.innerHTML = `<img src="${baseUrl}" alt="Product Image">`;
 }
